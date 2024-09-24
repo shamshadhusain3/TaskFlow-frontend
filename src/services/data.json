@@ -1,0 +1,19 @@
+{
+    "tasks": [
+        { "id": "1", "name": "Task 1", "assignedTo": "John Doe", "status": "Pending" },
+        { "id": "2", "name": "Task 2", "assignedTo": "Jane Smith", "status": "Completed" },
+        { "id": "3", "name": "Task 3", "assignedTo": "Alice Johnson", "status": "In Progress" },
+        { "id": "4", "name": "Task 4", "assignedTo": "Bob Brown", "status": "Completed" }
+    ],
+    "employees": [
+        { "id": "1", "name": "John Doe", "role": "Developer" },
+        { "id": "2", "name": "Jane Smith", "role": "Designer" },
+        { "id": "3", "name": "Alice Johnson", "role": "Project Manager" },
+        { "id": "4", "name": "Bob Brown", "role": "Tester" }
+    ],
+    "teams": [
+        { "id": "1", "name": "Team A" },
+        { "id": "2", "name": "Team B" },
+        { "id": "3", "name": "Team C" }
+    ]
+}
