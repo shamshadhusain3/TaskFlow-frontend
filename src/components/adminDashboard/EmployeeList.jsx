@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const EmployeeList = ({ employees, onAdd, onRemove, onUpdate, loading, error }) => {
     const [showForm, setShowForm] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
-    const [currentEmployee, setCurrentEmployee] = useState({ firstName: '', lastName: '', role: '', email: '' });
+    const [currentEmployee, setCurrentEmployee] = useState({ fName: '', lName: '', role: '', email: '', password: '' });
     const formRef = useRef(null);
 
     useEffect(() => {
@@ -18,20 +18,26 @@ const EmployeeList = ({ employees, onAdd, onRemove, onUpdate, loading, error }) 
 
     const handleAddOrUpdateEmployee = async (event) => {
         event.preventDefault();
-        const firstName = event.target.first_name.value;
-        const lastName = event.target.last_name.value;
+        const fName = event.target.first_name.value;
+        const lName = event.target.last_name.value;
         const role = event.target.role.value;
         const email = event.target.email.value;
+        const password = event.target.password.value;
+        const user = localStorage.getItem('user');
+        const suserId = JSON.parse(user);
+        const suser = suserId.empId+" "+suserId.fName;
 
-        if (firstName && lastName && role && email) {
+
+
+        if (fName && lName && role && email && password) {
             if (isEditing) {
                 // Update employee
-                await onUpdate(currentEmployee.id, { firstName, lastName, role, email });
+                await onUpdate(currentEmployee.id, { fName, lName, role, email, password , suser});
                 toast.success('Employee updated successfully!');
                 setIsEditing(false);
             } else {
                 // Add new employee
-                await onAdd({ firstName, lastName, role, email });
+                await onAdd({ fName, lName, role, email, password, suser });
                 toast.success('Employee added successfully!');
             }
             toggleForm();
@@ -54,7 +60,7 @@ const EmployeeList = ({ employees, onAdd, onRemove, onUpdate, loading, error }) 
     const toggleForm = () => {
         setShowForm(!showForm);
         if (!showForm) {
-            setCurrentEmployee({ firstName: '', lastName: '', role: '', email: '' });
+            setCurrentEmployee({ fName: '', lName: '', role: '', email: '' , password: '' , suser:''});
             setIsEditing(false);
         }
     };
@@ -85,7 +91,7 @@ const EmployeeList = ({ employees, onAdd, onRemove, onUpdate, loading, error }) 
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.1 }}
                             >
-                                <td className="py-4 text-sm sm:text-base">{employee.firstName} {employee.lastName}</td>
+                                <td className="py-4 text-sm sm:text-base">{employee.fName} {employee.lName}</td>
                                 <td className="text-sm sm:text-base">{employee.role}</td>
                                 <td className="text-sm sm:text-base">{employee.email}</td>
                                 <td className="text-sm sm:text-base">
@@ -126,7 +132,7 @@ const EmployeeList = ({ employees, onAdd, onRemove, onUpdate, loading, error }) 
                         <input
                             type="text"
                             id="first_name"
-                            defaultValue={currentEmployee.firstName}
+                            defaultValue={currentEmployee.fName}
                             className="w-full p-2 border border-gray-300 rounded mt-1"
                             required
                         />
@@ -136,7 +142,7 @@ const EmployeeList = ({ employees, onAdd, onRemove, onUpdate, loading, error }) 
                         <input
                             type="text"
                             id="last_name"
-                            defaultValue={currentEmployee.lastName}
+                            defaultValue={currentEmployee.lName}
                             className="w-full p-2 border border-gray-300 rounded mt-1"
                             required
                         />
@@ -157,6 +163,16 @@ const EmployeeList = ({ employees, onAdd, onRemove, onUpdate, loading, error }) 
                             type="email"
                             id="email"
                             defaultValue={currentEmployee.email}
+                            className="w-full p-2 border border-gray-300 rounded mt-1"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="password" className="block text-sm">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            defaultValue={currentEmployee.password}
                             className="w-full p-2 border border-gray-300 rounded mt-1"
                             required
                         />

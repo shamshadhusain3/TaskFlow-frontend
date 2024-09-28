@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
 import Header from "./Header";
 import { StyleButton } from "../ui/miniComponents/button/StyleButton";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 function Navbar() {
+  const { authenticated ,logout} = useContext(AuthContext);  // Access authenticated
+
   const [isRightHanded, setisRightHanded] = useState(false);
   const [toggleNav, setToggleNav] = useState(false);
 
@@ -67,9 +70,15 @@ function Navbar() {
               </a>
             </li>
             <li>
-            <Link to="/login" className="block py-2">
+            {authenticated ? (
+              <Link onClick={logout} className="block py-2">
+                Logout
+              </Link>
+            ) : (
+              <Link to="/login" className="block py-2">
                 Login
               </Link>
+            )}
             </li>
           </ul>
         </div>

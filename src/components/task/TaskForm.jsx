@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 
-const TaskForm = ({ onSubmit , employees = [], loading, error }) => {
-    const [task, setTask] = useState({ 
-        name: '', 
-        assignedTo: '', 
-        description: '', 
+const TaskForm = ({ onSubmit, employees = [], loading, error }) => {
+    const user=JSON.parse(localStorage.getItem('user'));
+    const assignedBy=user.empId+""+user.fName;
+    
+  
+    const [task, setTask] = useState({
+        title: '',
+        assignedBy:assignedBy,
+        assignedTo: '',
+        description: '',
+        priority: '',
+        startDate: '',
+        endDate: '',
+        comment: '',
         status: 'Pending', 
         dueDate: '' 
     });
+ 
 
     const handleChange = (e) => {
         setTask({ ...task, [e.target.name]: e.target.value });
@@ -17,9 +27,14 @@ const TaskForm = ({ onSubmit , employees = [], loading, error }) => {
         e.preventDefault();
         onSubmit(task);
         setTask({ 
-            name: '', 
+            title: '', 
+            assignedBy:assignedBy,
             assignedTo: '', 
             description: '', 
+            priority: '', 
+            startDate: '', 
+            endDate: '',
+            comment: '',
             status: 'Pending', 
             dueDate: '' 
         });
@@ -28,11 +43,11 @@ const TaskForm = ({ onSubmit , employees = [], loading, error }) => {
     return (
         <form onSubmit={handleSubmit} className="p-10">
             <div className="mb-5">
-                <label className="block mb-2 text-sm font-bold">Task Name</label>
+                <label className="block mb-2 text-sm font-bold">Task Title</label>
                 <input
                     type="text"
-                    name="name"
-                    value={task.name}
+                    name="title"
+                    value={task.title}
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded-md"
                     required
@@ -40,24 +55,24 @@ const TaskForm = ({ onSubmit , employees = [], loading, error }) => {
             </div>
             <div className="mb-5">
                 <label className="block mb-2 text-sm font-bold">Assigned To</label>
-                {/* <select
+                <select
                     name="assignedTo"
                     value={task.assignedTo}
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded-md"
-                    required
+                    
                 >
                     <option value="">Select Employee</option>
                     {loading && <option value="">Loading...</option>}
                     {error && <option value="">Error...</option>}
                     {Array.isArray(employees) && employees.length > 0 && 
                         employees.map((employee) => (
-                            <option key={employee.id} value={employee.firstName}>
-                                {employee.firstName} {employee.lastName} - {employee.id}
+                            <option key={employee.id} value={`${employee.empId} ${employee.fName}`}>
+                                {employee.fName} {employee.lName} - {employee.empId}
                             </option>
                         ))
                     }
-                </select> */}
+                </select>
             </div>
             <div className="mb-5">
                 <label className="block mb-2 text-sm font-bold">Description</label>
@@ -67,6 +82,50 @@ const TaskForm = ({ onSubmit , employees = [], loading, error }) => {
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded-md"
                     required
+                />
+            </div>
+            <div className="mb-5">
+                <label className="block mb-2 text-sm font-bold">Priority</label>
+                <select
+                    name="priority"
+                    value={task.priority}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-md"
+                    required
+                >
+                    <option value="">Select Priority</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            </div>
+            <div className="mb-5">
+                <label className="block mb-2 text-sm font-bold">Start Date</label>
+                <input
+                    type="datetime-local"
+                    name="startDate"
+                    value={task.startDate}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-md"
+                />
+            </div>
+            <div className="mb-5">
+                <label className="block mb-2 text-sm font-bold">End Date</label>
+                <input
+                    type="datetime-local"
+                    name="endDate"
+                    value={task.endDate}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-md"
+                />
+            </div>
+            <div className="mb-5">
+                <label className="block mb-2 text-sm font-bold">Comment</label>
+                <textarea
+                    name="comment"
+                    value={task.comment}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded-md"
                 />
             </div>
             <div className="mb-5">
@@ -83,7 +142,7 @@ const TaskForm = ({ onSubmit , employees = [], loading, error }) => {
                     <option value="Completed">Completed</option>
                 </select>
             </div>
-            <div className="mb-5">
+            {/* <div className="mb-5">
                 <label className="block mb-2 text-sm font-bold">Due Date</label>
                 <input
                     type="date"
@@ -93,7 +152,7 @@ const TaskForm = ({ onSubmit , employees = [], loading, error }) => {
                     className="w-full p-2 border border-gray-300 rounded-md"
                     required
                 />
-            </div>
+            </div> */}
             <button 
                 type="submit"
                 disabled={loading}  // Disable button if loading

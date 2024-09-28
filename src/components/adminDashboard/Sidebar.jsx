@@ -1,7 +1,9 @@
-import React from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Sidebar = ({setContent}) => {
+    const { logout } = useContext(AuthContext);  // Access authenticated
 
     const handleTask = () => {
         setContent('Task');
@@ -24,6 +26,10 @@ const Sidebar = ({setContent}) => {
                     <li className="mb-4">
                         <NavLink onClick={handleEmployee} className="hover:text-blue-300" activeClassName="text-blue-200">Employees</NavLink>
                     </li>
+
+                    <li className="mb-4">
+                        <NavLink onClick={logout} className="hover:text-blue-300" activeClassName="text-blue-200">Logout</NavLink>
+                        </li>
                 </ul>
             </nav>
         </div>

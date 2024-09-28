@@ -11,7 +11,7 @@ const Task = ({tasks, updateTask}) => {
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [isRemarkModalOpen, setIsRemarkModalOpen] = useState(false);
 
-  console.log(isProfile,'profile task')
+
 
 
   const handleShowDetails = (task) => {

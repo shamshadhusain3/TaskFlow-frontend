@@ -20,7 +20,7 @@ function LandingPage() {
 
         
 {/* navbar */}
-<Navbar/>
+{/* <Navbar/> */}
 {/* Hero Section */}
 <HeroSection/>
 
