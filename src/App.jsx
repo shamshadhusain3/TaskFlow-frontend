@@ -108,7 +108,7 @@ function App() {
         />
       </Routes>
 
-      <Alert stack={{ limit: 3 }} />
+    
     </main>
   );
 }

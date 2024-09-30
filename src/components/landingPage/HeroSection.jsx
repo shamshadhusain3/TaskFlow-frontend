@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { StyleButton } from '../ui/miniComponents/button/StyleButton';
-import AuthForm from '../ui/AuthForm';
+
 // import AuthFormMobile from '../ui/AuthFormMobile';
 
 import AuthButtons from '../ui/miniComponents/button/AuthButtons';
