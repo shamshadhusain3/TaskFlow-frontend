@@ -2,7 +2,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "../../lib/utils";
-import AuthForm from './AuthForm'
+
 import {
   IconBrightnessDown,
   IconBrightnessUp,
@@ -24,6 +24,7 @@ import { IconWorld } from "@tabler/icons-react";
 import { IconCommand } from "@tabler/icons-react";
 import { IconCaretLeftFilled } from "@tabler/icons-react";
 import { IconCaretDownFilled } from "@tabler/icons-react";
+import AuthForm from "../forms/user/login/Login";
 // import Image from "next/image";
 
 export const MacbookScroll = ({
@@ -176,7 +177,8 @@ export const Lid = ({
       >
         <div className="absolute inset-0 bg-[#272729] rounded-lg" />
         <div className="object-cover object-left-top absolute rounded-lg inset-0 h-full w-full opacity-[1] ">
-          <AuthForm/>
+          {/* <div className="w-full "><AuthForm/></div> */}
+          <img src="images/Designer.png" alt="" />
         </div>
         
         {/* <img

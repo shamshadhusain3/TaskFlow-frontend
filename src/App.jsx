@@ -76,6 +76,7 @@ import "react-s-alert/dist/s-alert-default.css";
 import "react-s-alert/dist/s-alert-css-effects/slide.css";
 import Profile from "./components/profile/Profile";
 import Navbar from "./components/header/Navbar";
+import AuthForm from "./components/forms/user/login/Login";
  
 
 function App() {
@@ -88,7 +89,7 @@ function App() {
        {admin?.role!==('manager' || 'company'||'teamLeader')&& <Navbar />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<AuthForm />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/oauth2/redirect" element={<OAuth2RedirectHandler />} />
         <Route path="*" element={<NotFound />} />

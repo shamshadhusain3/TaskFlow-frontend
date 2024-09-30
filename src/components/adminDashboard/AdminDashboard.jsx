@@ -80,7 +80,7 @@ export const AdminDashboard = () => {
       // Filter the tasks based on the assignedBy field
       const filteredTasks = data.filter(task => task.assignedBy === assignedBy);
 
-      setTasks(data); // Set the filtered tasks
+      setTasks(filteredTasks); // Set the filtered tasks
     } catch (err) {
       console.error("Error fetching tasks:", err);
     } finally {
