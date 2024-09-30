@@ -37,7 +37,7 @@ export default function AuthButtons() {
   }
 
   const handleNavigation = () => {
-    navigate(isLogin ? '/login' : '/signup')
+    navigate(isLogin ? '/auth' : '/auth')
   }
 
   return (
@@ -76,7 +76,7 @@ export default function AuthButtons() {
       <div className="mt-4 text-white text-center">
         <p>Current mode: {isLogin ? 'Login' : 'Sign Up'}</p>
         <p>
-          <Link to="/login" className="underline">Login Page</Link> | <Link to="/signup" className="underline">Sign Up Page</Link>
+          <Link to="/auth" className="underline">Login Page</Link> | <Link to="/auth" className="underline">Sign Up Page</Link>
         </p>
       </div>
     </div>

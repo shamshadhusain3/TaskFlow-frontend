@@ -89,7 +89,7 @@ function App() {
        {admin?.role!==('manager' || 'company'||'teamLeader')&& <Navbar />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<AuthForm />} />
+        <Route path="/auth" element={<AuthForm />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/oauth2/redirect" element={<OAuth2RedirectHandler />} />
         <Route path="*" element={<NotFound />} />
