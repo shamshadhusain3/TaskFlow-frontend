@@ -14,7 +14,7 @@ export default defineConfig({
   },
    build: {
     rollupOptions: {
-      external: ['react-s-alert']
+      external: ['react-s-alert/dist/s-alert-default.css']
     }
   },
   plugins: [react()],
