@@ -130,6 +130,7 @@ export const AdminDashboard = () => {
   const totalTasks = tasks.length; 
   const totalPendingTasks = tasks.filter(task => task.status === "Pending").length;
   const totalCompletedTasks = tasks.filter(task => task.status === "Completed").length;
+  const [issidebarvisible, setissidebarvisible] = useState(false)
 
   const toggleForm = () => {
     setShowForm(!showForm);
@@ -137,8 +138,9 @@ export const AdminDashboard = () => {
 
   return (
     <div className="flex w-full">
-      <Sidebar setContent={setContent} />
-      <div className="p-2 md:w-[70vw] md:absolute md:left-96 left-0">
+      
+      <Sidebar setContent={setContent} isShow={issidebarvisible} />
+      <div className="p-2 md:w-[70vw] md:absolute md:left-72 left-0">
         <Dashboard
           totalTasks={totalTasks}
           totalCompletedTasks={totalCompletedTasks}
@@ -146,7 +148,8 @@ export const AdminDashboard = () => {
           totalEmployee={employees.length} // Employee count
         />
         {content === "Task" && (
-          <>
+          <div className="taskContainer relative">
+            {/* <div className="add text-3xl">+</div> */}
             <TaskList 
               employees={employees}
               loading={loadingTasks}
@@ -159,7 +162,7 @@ export const AdminDashboard = () => {
               loading={loadingTasks} 
               onSubmit={(taskData) => handleTaskCRUD("create", taskData)} 
             />
-          </>
+          </div>
         )}
         {content === "Employee" && (
           <div className="px-10 flex w-full gap-10 flex-wrap">

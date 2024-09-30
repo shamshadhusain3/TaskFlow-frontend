@@ -30,27 +30,52 @@ function LandingPage() {
 <MacbookScrollDemo/>
 
 </div>
-<div className="flex flex-col gap-6 md:flex-row md:flex-wrap justify-center items-center min-h-screen bg-gray-100 p-4">
-<Card
- title="Beautiful Card"
- content="This is a beautiful card component created with React and Tailwind CSS. It has an image, title, content, and an optional footer."
- imageSrc="https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" // Replace with your image URL
- footer={<button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Learn More</button>}
-/>
-<Card
- title="Beautiful Card"
- content="This is a beautiful card component created with React and Tailwind CSS. It has an image, title, content, and an optional footer."
- imageSrc="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" // Replace with your image URL
- footer={<button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Learn More</button>}
-/>
-<Card
- title="Beautiful Card"
- content="This is a beautiful card component created with React and Tailwind CSS. It has an image, title, content, and an optional footer."
- imageSrc="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" // Replace with your image URL
- footer={<button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Learn More</button>}
-/>
+{/* <div className="flex flex-col gap-6 md:flex-row md:flex-wrap justify-center items-center min-h-screen bg-gray-100 p-4">
+  <Card
+    title="Task Management"
+    content="Assign tasks, set priorities, and track progress with real-time updates."
+    imageSrc="https://images.unsplash.com/photo-1581091012184-6c34b1c647e8"
+    footer={<button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Explore Tasks</button>}
+  />
+  
+  <Card
+    title="Team Collaboration"
+    content="Collaborate with teams and monitor progress efficiently."
+    imageSrc="https://images.unsplash.com/photo-1562577309-2592ab84b1bc"
+    footer={<button className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Manage Teams</button>}
+  />
+  
+  <Card
+    title="Employee Management"
+    content="Manage employee records and roles for seamless operations."
+    imageSrc="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+    footer={<button className="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600">View Employees</button>}
+  />
+</div> */}
 
+<div className="flex flex-col gap-6 md:flex-row md:flex-wrap justify-center items-center min-h-screen bg-gray-100 p-4">
+  <Card
+    title="Task Management"
+    content="Assign tasks, set priorities, and track progress with real-time updates."
+    imageSrc="https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?q=80&w=1939&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    footer={<button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Explore Tasks</button>}
+  />
+  
+  <Card
+    title="Team Collaboration"
+    content="Collaborate with teams and monitor progress efficiently."
+    imageSrc="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?q=80&w=2047&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    footer={<button className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Manage Teams</button>}
+  />
+  
+  <Card
+    title="Employee Management"
+    content="Manage employee records and roles for seamless operations."
+    imageSrc="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    footer={<button className="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600">View Employees</button>}
+  />
 </div>
+
 
 <div className="about">
     <About/>

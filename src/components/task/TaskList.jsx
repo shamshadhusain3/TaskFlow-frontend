@@ -1069,7 +1069,7 @@ const TaskList = ({ tasks, onEdit, onDelete, employees, isProfile, onDetail }) =
               </select>
             </div>
         
-            <div className="mb-4">
+            <div  className={`mb-4 ${isProfile ? 'hidden' : ''}`}>
                 <label className="block text-sm font-medium text-gray-700">Due Date</label>
                 <input
                   type="date"
@@ -1080,7 +1080,17 @@ const TaskList = ({ tasks, onEdit, onDelete, employees, isProfile, onDetail }) =
                   required
                 />
               </div>
-              <div className="mb-4">
+              <div className={`mb-4 ${isProfile?'':'hidden'}`}>
+                  <label className="block text-sm text-gray-700 mb-2">Comment</label>
+                  <textarea
+                      name="comment"
+                      value={editedTask.comment}
+                      onChange={handleInputChange}
+                      className="w-full p-2 border border-gray-300 rounded-md"
+                  />
+              </div>
+              
+              <div  className={`mb-4 ${isProfile ? 'hidden' : ''}`}>
                 <label className="block text-sm font-medium text-gray-700">Priority</label>
                 <select
                   name="priority"

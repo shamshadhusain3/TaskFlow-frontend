@@ -2,7 +2,7 @@ import { AuthContext } from '../../context/AuthContext';
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Sidebar = ({setContent}) => {
+const Sidebar = ({setContent,isShow}) => {
     const { logout } = useContext(AuthContext);  // Access authenticated
 
     const handleTask = () => {
@@ -13,7 +13,7 @@ const Sidebar = ({setContent}) => {
     }
     
     return (
-        <div className=" hidden md:block h-full py-16 fixed left-0 bg-blue-gradient-2 text-white w-64 p-5">
+        <div className={` ${isShow?'':'hidden'} w-[9rem] md:block h-full py-16 fixed left-0 bg-blue-gradient-2 text-white sm:w-[13rem] lg:w-64 p-5`}>
             <h1 className="text-2xl font-bold mb-10">TaskFlow Admin</h1>
             <nav>
                 <ul>

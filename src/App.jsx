@@ -79,11 +79,13 @@ import Navbar from "./components/header/Navbar";
  
 
 function App() {
-  const { authenticated } = useContext(AuthContext);  // Access authenticated
+  const { authenticated } = useContext(AuthContext); // Access authenticated 
+  const admin = JSON.parse(localStorage.getItem('user'))
+  
 
   return (
     <main className="md:mx-11 xl:mx-40">
-        <Navbar />
+       {admin?.role!==('manager' || 'company'||'teamLeader')&& <Navbar />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />

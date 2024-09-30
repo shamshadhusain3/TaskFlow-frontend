@@ -73,7 +73,7 @@ const ProfileDetail = ({ me }) => {
             ref={profileRef}
             className="max-w-lg md:max-w-3xl mx-auto my-6 p-4 bg-white rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
         >
-            <div className="flex flex-col items-center bg-gradient-to-r from-blue-600 to-blue-800 p-6 rounded-t-lg shadow-lg text-center">
+            <div className="flex flex-col items-center bg-blue-gradient p-6 rounded-t-lg shadow-lg text-center">
                 <img
                     src="/images/userImage.png"
                     alt="Profile"
@@ -124,7 +124,7 @@ const ProfileDetail = ({ me }) => {
                     </div> */}
                 </div>
 
-                <button className="mt-6 w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold py-3 rounded-lg shadow-lg transition-transform duration-300 hover:bg-blue-700 hover:shadow-xl hover:scale-105">
+                <button className="mt-6 w-full bg-blue-gradient-2 text-white font-semibold py-3 rounded-lg shadow-lg transition-all duration-300  hover:bg-blue-gradient hover:shadow-xl hover:scale-105">
                     Update
                 </button>
             </div>

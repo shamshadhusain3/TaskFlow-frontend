@@ -41,7 +41,7 @@ const TaskForm = ({ onSubmit, employees = [], loading, error }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="p-10">
+        <form onSubmit={handleSubmit} className="p-10 ">
             <div className="mb-5">
                 <label className="block mb-2 text-sm font-bold">Task Title</label>
                 <input
@@ -99,7 +99,8 @@ const TaskForm = ({ onSubmit, employees = [], loading, error }) => {
                     <option value="Low">Low</option>
                 </select>
             </div>
-            <div className="mb-5">
+           <div className="flex w-full gap-5">
+           <div className="mb-5 w-1/2">
                 <label className="block mb-2 text-sm font-bold">Start Date</label>
                 <input
                     type="datetime-local"
@@ -109,7 +110,7 @@ const TaskForm = ({ onSubmit, employees = [], loading, error }) => {
                     className="w-full p-2 border border-gray-300 rounded-md"
                 />
             </div>
-            <div className="mb-5">
+            <div className="mb-5 w-1/2">
                 <label className="block mb-2 text-sm font-bold">End Date</label>
                 <input
                     type="datetime-local"
@@ -119,6 +120,7 @@ const TaskForm = ({ onSubmit, employees = [], loading, error }) => {
                     className="w-full p-2 border border-gray-300 rounded-md"
                 />
             </div>
+           </div>
             <div className="mb-5">
                 <label className="block mb-2 text-sm font-bold">Comment</label>
                 <textarea
