@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 const EmployeeList = ({ employees, onAdd, onRemove, onUpdate, loading, error }) => {
     const [showForm, setShowForm] = useState(false);

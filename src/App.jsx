@@ -63,7 +63,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import LandingPage from "./components/landingPage/LandingPage";
 import { AdminDashboard } from "./components/adminDashboard/AdminDashboard";
-import Login from "./components/forms/user/login/Login";
+
 import Signup from "./components/forms/user/signup/Signup";
 import OAuth2RedirectHandler from "./components/oauth2/OAuth2RedirectHandler";
 import NotFound from "./common/NotFound";
@@ -86,7 +86,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/auth" element={<AuthForm />} />
-        <Route path="/signup" element={<Signup />} />
+        {/* <Route path="/signup" element={<Signup />} /> */}
         <Route path="/oauth2/redirect" element={<OAuth2RedirectHandler />} />
         <Route path="*" element={<NotFound />} />
         {/* Protected routes */}
