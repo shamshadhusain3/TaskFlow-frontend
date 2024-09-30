@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signup as signupApi } from '../../../../services/UseApiService'; 
 import { AuthContext } from '../../../../context/AuthContext';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 import { FaUser, FaEnvelope, FaLock, FaUserTie } from 'react-icons/fa'; // Import react-icons
 
 const Signup = () => {
