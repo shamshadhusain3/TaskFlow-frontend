@@ -11,9 +11,7 @@
 // import NotFound from "./common/NotFound";
 // import { AuthContext, AuthProvider } from "./context/AuthContext";
 // import PrivateRoute from "./common/PrivateRoute";
-// import Alert from "react-s-alert";
-// import "react-s-alert/dist/s-alert-default.css";
-// import "react-s-alert/dist/s-alert-css-effects/slide.css";
+
 // import Profile from "./components/profile/Profile";
 
 // function App() {
@@ -71,9 +69,7 @@ import OAuth2RedirectHandler from "./components/oauth2/OAuth2RedirectHandler";
 import NotFound from "./common/NotFound";
 import { AuthContext } from "./context/AuthContext";  // Only import AuthContext
 import PrivateRoute from "./common/PrivateRoute";
-import Alert from "react-s-alert";
-import "react-s-alert/dist/s-alert-default.css";
-import "react-s-alert/dist/s-alert-css-effects/slide.css";
+
 import Profile from "./components/profile/Profile";
 import Navbar from "./components/header/Navbar";
 import AuthForm from "./components/forms/user/login/Login";
