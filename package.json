@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@gsap/react": "^2.1.1",
     "@react-three/drei": "^9.109.2",
     "@react-three/fiber": "^8.16.8",
@@ -27,6 +28,7 @@
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.25.1",
+    "react-toastify": "^10.0.5",
     "sheryjs": "^1.0.0-beta.0.1.8",
     "styled-components": "^6.1.12",
     "tailwind-merge": "^2.4.0",

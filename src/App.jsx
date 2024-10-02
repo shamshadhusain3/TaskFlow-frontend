@@ -64,7 +64,7 @@ import { Route, Routes } from "react-router-dom";
 import LandingPage from "./components/landingPage/LandingPage";
 import { AdminDashboard } from "./components/adminDashboard/AdminDashboard";
 
-import Signup from "./components/forms/user/signup/Signup";
+// import Signup from "./components/forms/user/signup/Signup";
 import OAuth2RedirectHandler from "./components/oauth2/OAuth2RedirectHandler";
 import NotFound from "./common/NotFound";
 import { AuthContext } from "./context/AuthContext";  // Only import AuthContext

@@ -6,6 +6,8 @@ import TaskForm from "../task/TaskForm";
 import TaskList from "../task/TaskList";
 import EmployeeList from "./EmployeeList";
 import EmployeeCard from "./EmployeeCard";
+import { MdMenu } from "react-icons/md";
+import { IoClose } from "react-icons/io5";
 import { 
     getAllEmployees, 
     createEmployee, 
@@ -132,13 +134,18 @@ export const AdminDashboard = () => {
   const totalCompletedTasks = tasks.filter(task => task.status === "Completed").length;
   const [issidebarvisible, setissidebarvisible] = useState(false)
 
+  const toggleSideBar = () => {
+    setissidebarvisible(!issidebarvisible); // Corrected the state update
+  }
   const toggleForm = () => {
     setShowForm(!showForm);
   };
 
   return (
     <div className="flex w-full">
-      
+      <div
+      onClick={toggleSideBar}
+      className="menubar z-50 text-3xl p-4 text-blue-400 hover:text-blue-600 fixed sm:hidden">{issidebarvisible? <IoClose />:<MdMenu />}</div>
       <Sidebar setContent={setContent} isShow={issidebarvisible} />
       <div className="p-2 md:w-[70vw] md:absolute md:left-72 left-0">
         <Dashboard

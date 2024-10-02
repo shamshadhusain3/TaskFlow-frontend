@@ -1,163 +1,206 @@
-// src/components/ContactUs.jsx
-
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { StyleButton } from "./ui/miniComponents/button/StyleButton";
+import React, { useState, useEffect, useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import { gsap } from 'gsap';
+import { FaUser, FaEnvelope, FaPen, FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaPaperPlane } from 'react-icons/fa';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
   const formRef = useRef(null);
+  const titleRef = useRef(null);
+  const descriptionRef = useRef(null);
 
   useEffect(() => {
+    gsap.from(titleRef.current, {
+      opacity: 0,
+      y: -50,
+      duration: 1,
+      ease: 'power3.out'
+    });
+
+    gsap.from(descriptionRef.current, {
+      opacity: 0,
+      y: -30,
+      duration: 1,
+      delay: 0.3,
+      ease: 'power3.out'
+    });
+
     gsap.from(formRef.current, {
       opacity: 0,
       y: 50,
       duration: 1,
-      ease: "power2.out",
+      delay: 0.6,
+      ease: 'power3.out'
     });
   }, []);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const result = await emailjs.send(
+        'service_2d6ypxo',
+        'template_8ws0b5e',
+        formData,
+        '4MxLrm5kexyfZYvat'
+      );
+      setSubmitMessage('Message sent successfully!');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      
+      // Animate success message
+      gsap.to('.success-message', {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: 'power3.out',
+      });
+      
+      setTimeout(() => {
+        gsap.to('.success-message', {
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out'
+        });
+      }, 3000);
+      toast.success('Your message has been sent successfully. Thank you for contacting us!');
+      
+    } catch (error) {
+      console.error(error);
+      setSubmitMessage('Failed to send message. Please try again.');
+      
+      // Animate error message
+      gsap.to('.error-message', {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: 'power3.out'
+      });
+      
+      setTimeout(() => {
+        gsap.to('.error-message', {
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out'
+        });
+      }, 3000);
+      
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <div>
-    <section id="contact" className="text-gray-700 body-font relative">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-col text-center w-full mb-12">
-          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-            Contact Us
-          </h1>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-            Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-            gentrify.
-          </p>
-        </div>
-        <div className="lg:w-1/2 md:w-2/3 mx-auto">
-          <div className="flex flex-wrap -m-2">
-            <div className="p-2 w-1/2">
-              <div className="relative">
-                <label for="name" className="leading-7 text-sm text-gray-600">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                />
-              </div>
-            </div>
-            <div className="p-2 w-1/2">
-              <div className="relative">
-                <label
-                  for="email"
-                  className="leading-7 text-sm text-gray-600"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                />
-              </div>
-            </div>
-            <div className="p-2 w-full">
-              <div className="relative">
-                <label
-                  for="message"
-                  className="leading-7 text-sm text-gray-600"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                ></textarea>
-              </div>
-            </div>
-            <div className="p-2 w-full">
-               <StyleButton
-            bg="blue"
-            text="Submit"
-            hover="blue"
-            btn-text='text-blue-500'
-            border="border-['#0DA882']"
-            onClick={null}
-          />
-            </div>
-            <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center flex flex-col gap-3 items-center ">
-              <a className="text-indigo-500 my-4">logiclegion@gmail.com</a>
-              {/* <p className="leading-normal my-5">
-                49 Smith St.
-                <br />
-                Saint Cloud, MN 56301
-              </p> */}
-             
-              <span className="inline-flex">
-                <a className="text-gray-500">
-                  <svg
-                    fill="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-5 h-5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                  </svg>
-                </a>
-                <a className="ml-4 text-gray-500">
-                  <svg
-                    fill="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-5 h-5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                  </svg>
-                </a>
-                <a className="ml-4 text-gray-500">
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-5 h-5"
-                    viewBox="0 0 24 24"
-                  >
-                    <rect
-                      width="20"
-                      height="20"
-                      x="2"
-                      y="2"
-                      rx="5"
-                      ry="5"
-                    ></rect>
-                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                  </svg>
-                </a>
-                <a className="ml-4 text-gray-500">
-                  <svg
-                    fill="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    className="w-5 h-5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                  </svg>
-                </a>
-              </span>
-            </div>
+    <div className="max-w-4xl mx-auto p-6 bg-gradient-to-br from-white to-gray-100 rounded-lg shadow-xl">
+      <h1 ref={titleRef} className="text-5xl font-bold text-center text-gray-900 mb-6">Get in Touch</h1>
+      <p ref={descriptionRef} className="text-center text-gray-700 mb-8 text-lg">
+        We're excited to hear from you! Whether you have a question, need advice, or just want to say hello.
+      </p>
+      
+      <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="relative">
+            <FaUser className="absolute left-3 top-3 text-gray-400" />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="peer pl-10 w-full px-4 py-2 bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 outline-none transition duration-200"
+              placeholder="Your Name"
+            />
+          </div>
+          <div className="relative">
+            <FaEnvelope className="absolute left-3 top-3 text-gray-400" />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="peer pl-10 w-full px-4 py-2 bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 outline-none transition duration-200"
+              placeholder="Your Email"
+            />
           </div>
         </div>
+        <div className="relative">
+          <FaPen className="absolute left-3 top-3 text-gray-400" />
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            required
+            className="peer pl-10 w-full px-4 py-2 bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 outline-none transition duration-200"
+            placeholder="Subject"
+          />
+        </div>
+        <div className="relative">
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            className="w-full h-32 px-4 py-2 bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 outline-none transition duration-200"
+            placeholder="Your Message"
+          />
+        </div>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className={`w-full flex items-center justify-center bg-blue-500 text-white font-bold py-2 rounded transition duration-200 ${
+            isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'
+          }`}
+        >
+          <FaPaperPlane className="mr-2" /> {/* Send icon */}
+          {isSubmitting ? 'Sending...' : 'Send Message'}
+        </button>
+      </form>
+      {submitMessage && (
+        <div className={`mt-4 text-center ${submitMessage.includes('successfully') ? 'success-message text-green-600' : 'error-message text-red-600'}`}>
+          {submitMessage}
+        </div>
+      )}
+      <div className="pt-8 mt-8 border-t border-gray-200 text-center flex flex-col gap-3 items-center">
+        <a className="text-indigo-500 my-4">logiclegion@gmail.com</a>
+        <span className="inline-flex">
+          <a href="#" className="text-gray-500">
+            <FaFacebook className="w-5 h-5" />
+          </a>
+          <a href="#" className="ml-4 text-gray-500">
+            <FaTwitter className="w-5 h-5" />
+          </a>
+          <a href="#" className="ml-4 text-gray-500">
+            <FaInstagram className="w-5 h-5" />
+          </a>
+          <a href="#" className="ml-4 text-gray-500">
+            <FaLinkedin className="w-5 h-5" />
+          </a>
+        </span>
       </div>
-    </section>
-  </div>
+    </div>
   );
 };
 
