@@ -73,7 +73,7 @@ import PrivateRoute from "./common/PrivateRoute";
 import Profile from "./components/profile/Profile";
 import Navbar from "./components/header/Navbar";
 import AuthForm from "./components/forms/user/login/Login";
- 
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const { authenticated } = useContext(AuthContext); // Access authenticated 

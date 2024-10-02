@@ -4,7 +4,7 @@ import Navbar from '../header/Navbar'
 import HeroSection from './HeroSection'
 import { MacbookScrollDemo } from './MacbookScrollDemo'
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 import Card from '../ui/Cards'
 
 import Footer from '../Footer'

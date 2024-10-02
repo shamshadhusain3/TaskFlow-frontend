@@ -3,7 +3,7 @@ import emailjs from '@emailjs/browser';
 import { gsap } from 'gsap';
 import { FaUser, FaEnvelope, FaPen, FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaPaperPlane } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
