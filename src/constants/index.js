@@ -1,5 +1,5 @@
 // export const API_BASE_URL = 'http://localhost:8080';
-export const API_BASE_URL = 'backendtaskflow-production.up.railway.app';
+export const API_BASE_URL = 'https://backendtaskflow-production.up.railway.app/';
 
 export const ACCESS_TOKEN = 'accessToken';
 
