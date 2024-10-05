@@ -12,11 +12,11 @@ export default defineConfig({
     host: '0.0.0.0',
     port: '3000'
   },
-  build: {
-    rollupOptions: {
-      external: ['react-toastify','react-toastify/dist/ReactToastify.css'],  // Explicitly make react-toastify external
-    },
-  },
+  // build: {
+  //   rollupOptions: {
+  //     external: ['react-toastify','react-toastify/dist/ReactToastify.css'],  // Explicitly make react-toastify external
+  //   },
+  // },
    
   plugins: [react()],
 })

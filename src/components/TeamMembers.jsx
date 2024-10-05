@@ -42,7 +42,7 @@ gsap.registerPlugin(ScrollTrigger);
 function TeamMembers() {
     const teamMembers = [
         { name: 'Shamshad Husain', role: 'Leader', image: 'images/sd.png' },
-        { name: 'Abhishek Tiwari', role: 'Developer', image: 'images/abhishek.png' },
+        { name: 'Abhishek Tiwari', role: 'Developer', image: 'images/abhishek.jpg' },
         { name: 'Astha Sachan', role: 'Designer', image: 'images/astha.png' },
         { name: 'Harsh Shukla', role: 'Tester', image: 'images/harsh.png' }
     ];

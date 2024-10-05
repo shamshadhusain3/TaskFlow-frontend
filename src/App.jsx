@@ -58,9 +58,9 @@
 
 
 // App.jsx
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import LandingPage from "./components/landingPage/LandingPage";
 import { AdminDashboard } from "./components/adminDashboard/AdminDashboard";
 
@@ -76,19 +76,32 @@ import AuthForm from "./components/forms/user/login/Login";
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  const navigate = useNavigate();
   const { authenticated } = useContext(AuthContext); // Access authenticated 
   const admin = JSON.parse(localStorage.getItem('user'))
-  
+  const [toggleNav, setToggleNav] = useState(false);
 
+
+
+  useEffect(()=>{
+    const  user = JSON.parse(localStorage.getItem('user'))
+    const allowedRoles = ['manager', 'company', 'teamLeader'];
+        if (user && allowedRoles.includes(user.role)) {
+          navigate('/admin');
+        } else {
+          navigate('/profile');
+        }
+       
+  },[])
+ 
   return (
     <main className="md:mx-11 xl:mx-40">
-       {admin?.role!==('manager' || 'company'||'teamLeader')&& <Navbar />}
+       {admin?.role!==('manager' || 'company'||'teamLeader')&& <Navbar toggleNav={toggleNav} setToggleNav={setToggleNav}/>}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/auth" element={<AuthForm />} />
         {/* <Route path="/signup" element={<Signup />} /> */}
         <Route path="/oauth2/redirect" element={<OAuth2RedirectHandler />} />
-        <Route path="*" element={<NotFound />} />
         {/* Protected routes */}
         <Route
           path="/profile"
@@ -97,7 +110,7 @@ function App() {
               <Profile />
             </PrivateRoute>
           }
-        />
+          />
         <Route
           path="/admin"
           element={
@@ -106,6 +119,7 @@ function App() {
             </PrivateRoute>
           }
         />
+          <Route path="*" element={<NotFound />} />
       </Routes>
 
     

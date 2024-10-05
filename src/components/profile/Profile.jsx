@@ -76,7 +76,7 @@ function Profile() {
       <div className="container">
         <div className="user-detail h-1/3 w-full p-10 flex flex-col gap-3 items-center justify-center mt-[2rem] border-b-2 border-blue-500">
           <div className="img">
-            <img src="images/userImage.png" alt="userPhoto" />
+            <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?size=338&ext=jpg&ga=GA1.1.1819120589.1727740800&semt=ais_hybrid" alt="userPhoto" />
           </div>
           <div className="userDetail flex flex-col justify-center items-center">
             <h1 className="user-name font-bold text-xl">{userme?.fName} {userme?.lName}</h1>

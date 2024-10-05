@@ -1,57 +1,3 @@
-// import React from 'react';
-
-// const ProfileDetail = ({me}) => {
-//   return (
-//     <div className="w-[90%] md:w-full mx-auto bg-white rounded-lg shadow-md overflow-hidden mt-10">
-//       <div className="bg-blue-gradient-2 p-6 flex items-center gap-[4.5rem]">
-//         <div className="flex items-center">
-//           <img
-//             src="/images/userImage.png"
-//             alt="profile"
-//             className="w-20 h-20 rounded-full object-cover border-2 border-white"
-//           />
-//         </div>
-//           <div className="flex flex-col justify-center items-center gap-4">
-//           <div className="ml-4 text-white">
-//             <h2 className="text-xl font-semibold">Profile</h2>
-//           </div>
-//         <button className="bg-white text-blue-700 font-semibold py-2 px-4 rounded">
-//           Update Pic.
-//         </button>
-//           </div>
-//       </div>
-//       <div className="p-6">
-//         <div className="flex items-center justify-between mb-4">
-//           <span className="text-gray-600 font-semibold">Name :</span>
-//           <span className="text-black">{me?.fName} {me?.lName}</span>
-//         </div>
-//         <div className="flex items-center justify-between mb-4">
-//           <span className="text-gray-600 font-semibold">EmpId :</span>
-//           <span className="text-black">{me?.empId}</span>
-//         </div>
-//         <div className="flex items-center justify-between mb-4">
-//           <span className="text-gray-600 font-semibold">Email :</span>
-//           <span className="text-black">{me?.email}</span>
-//         </div>
-//         <div className="flex items-center justify-between mb-4">
-//           <span className="text-gray-600 font-semibold">manager :</span>
-//           <span className="text-black">{me?.suser}</span>
-//         </div>
-//         <div className="flex items-center justify-between mb-8">
-//           <span className="text-gray-600 font-semibold">Phone :</span>
-//           <span className="text-black">{me?.phone}</span>
-//         </div>
-//         <button className="w-full bg-blue-gradient-2 text-white font-semibold py-2 rounded hover:bg-blue-gradient hover:transition-all hover:duration-300 hover:ease-in-out  transition duration-300">
-//           Update
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProfileDetail;
-
-
 
 // ProfileDetail.js
 import React, { useEffect, useRef } from 'react';
@@ -75,7 +21,7 @@ const ProfileDetail = ({ me }) => {
         >
             <div className="flex flex-col items-center bg-blue-gradient p-6 rounded-t-lg shadow-lg text-center">
                 <img
-                    src="/images/userImage.png"
+                    src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?size=338&ext=jpg&ga=GA1.1.1819120589.1727740800&semt=ais_hybrid"
                     alt="Profile"
                     className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-white shadow-md transition-transform duration-300 hover:scale-110"
                 />

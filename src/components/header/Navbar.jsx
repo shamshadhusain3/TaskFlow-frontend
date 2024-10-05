@@ -5,21 +5,22 @@ import { StyleButton } from "../ui/miniComponents/button/StyleButton";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
-function Navbar() {
+function Navbar({toggleNav,setToggleNav}) {
   const { authenticated ,logout} = useContext(AuthContext);  // Access authenticated
 
   const [isRightHanded, setisRightHanded] = useState(false);
-  const [toggleNav, setToggleNav] = useState(false);
+  // const [toggleNav, setToggleNav] = useState(false);
 
   const toggleNavbar = () => {
     setToggleNav(!toggleNav);
   };
- 
-
+  
+  
+  
   console.log("IsReightHanded",isRightHanded)
   const navMenuStyle = {
     backdropFilter: "blur(5px)", // Correct syntax for backdrop-filter with blur
-
+    
     transition: "transform 700ms ease-in-out",
   };
 
@@ -75,7 +76,7 @@ function Navbar() {
                 Logout
               </Link>
             ) : (
-              <Link to="/login" className="block py-2">
+              <Link to="/auth" className="block py-2">
                 Login
               </Link>
             )}
